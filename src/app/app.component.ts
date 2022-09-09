@@ -1,10 +1,18 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
+import { AccordionModule } from './accordion/accordion.module';
+
 @Component({
+  standalone: true,
   selector: 'app-root',
+  imports: [CommonModule, AccordionModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'web-standards';
+  eventLogs: string[] = [];
+
+  log(value: string) {
+    this.eventLogs.push(value);
+  }
 }

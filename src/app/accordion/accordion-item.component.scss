@@ -1,0 +1,33 @@
+details[app-accordion-item] {
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  }
+
+  summary::marker {
+    content: var(--accordion-marker-icon-opened, "👉");
+  }
+  &[open] summary::marker {
+    content: var(--accordion-marker-icon-closed, "👇");
+  }
+
+  summary {
+    padding-left: 16px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  section {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    margin: 0;
+
+    > *:first-child {
+      margin-top: 0;
+    }
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
