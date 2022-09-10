@@ -4,7 +4,6 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  ViewEncapsulation,
   ChangeDetectionStrategy,
 } from '@angular/core';
 
@@ -14,11 +13,12 @@ import {
     <summary (click)="onClick()">
       <ng-content select="[app-accordion-item-heading]"></ng-content>
     </summary>
-    <ng-content select="section"></ng-content>
+    <section>
+      <ng-content select="[app-accordion-item-content]"></ng-content>
+    </section>
   `,
-  styleUrls: ['./accordion-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./accordion-item.component.scss'],
 })
 export class AccordionItemComponent<Ref = unknown> {
   @Output()

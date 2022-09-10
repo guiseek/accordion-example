@@ -1,94 +1,110 @@
 <h1>Accordion</h1>
 
-<h2>Todos abertos</h2>
+<div class="inflex col rgap-12">
+  <button (click)="changeIconMarkers()">Alterar ícones</button>
 
-<div app-accordion [allOpened]="true">
-  <details
-    app-accordion-item
-    ref="1"
-    (opened)="log('opened, ref: ' + $event)"
-    (closed)="log('closed, ref: ' + $event)"
-  >
-    <h3 app-accordion-item-heading>Título</h3>
-    <section>
-      <p>Conteúdo</p>
-    </section>
-  </details>
-  <details
-    ref="2"
-    app-accordion-item
-    (opened)="log('opened, ref: ' + $event)"
-    (closed)="log('closed, ref: ' + $event)"
-  >
-    <h3 app-accordion-item-heading>Título</h3>
-    <section>
-      <p>Conteúdo</p>
-      <p>
-        Mussum Ipsum, cacilds vidis litro abertis. Praesent malesuada urna nisi,
-        quis volutpat erat hendrerit non. Nam vulputate dapibus.Nullam volutpat
-        risus nec leo commodo, ut interdum diam laoreet. Sed non consequat
-        odio.Paisis, filhis, espiritis santis.Mais vale um bebadis conhecidiss,
-        que um alcoolatra anonimis.
-      </p>
-      <p>
-        Mussum Ipsum, cacilds vidis litro abertis. Praesent malesuada urna nisi,
-        quis volutpat erat hendrerit non. Nam vulputate dapibus.Nullam volutpat
-        risus nec leo commodo, ut interdum diam laoreet. Sed non consequat
-        odio.Paisis, filhis, espiritis santis.Mais vale um bebadis conhecidiss,
-        que um alcoolatra anonimis.
-      </p>
-    </section>
-  </details>
+  <label class="inflex cgap-6 align-center">
+    <span>Alterar cores</span>
+    <input type="color" #color (input)="changeBorderColor(color.value)" />
+  </label>
 </div>
 
-<br />
+<h2>Item</h2>
+
+<details app-accordion-item>
+  <h3 app-accordion-item-heading>Título</h3>
+  <p app-accordion-item-content>Conteúdo</p>
+</details>
+
+<hr />
+
+<h2>1 item aberto</h2>
+
+<section app-accordion>
+  <details app-accordion-item>
+    <h3 app-accordion-item-heading>Título 1</h3>
+    <p app-accordion-item-content>Conteúdo 1</p>
+  </details>
+  <details app-accordion-item open>
+    <h3 app-accordion-item-heading>Título 1</h3>
+    <p app-accordion-item-content>
+      Iusto ut autem praesentium nam fugiat repellat necessitatibus commodi
+      quibusdam libero, reprehenderit ipsa iure quidem, tempora laboriosam quis
+      recusandae sapiente officiis. Fugiat.
+    </p>
+  </details>
+  <details app-accordion-item>
+    <h3 app-accordion-item-heading>Título 1</h3>
+    <p app-accordion-item-content>Conteúdo 1</p>
+  </details>
+</section>
+
+<hr />
 
 <h2>Abertura alternada</h2>
 
-<div app-accordion>
-  <details
-    app-accordion-item
-    ref="1"
-    (opened)="log('opened, ref: ' + $event)"
-    (closed)="log('closed, ref: ' + $event)"
-  >
-    <h3 app-accordion-item-heading>Título</h3>
-    <section>
-      <p>Conteúdo</p>
-    </section>
+<section app-accordion>
+  <details *ngFor="let item of items" app-accordion-item>
+    <h3 app-accordion-item-heading>Título {{ item }}</h3>
+    <p app-accordion-item-content>Conteúdo {{ item }}</p>
   </details>
-  <details
-    app-accordion-item
-    ref="2"
-    (opened)="log('opened, ref: ' + $event)"
-    (closed)="log('closed, ref: ' + $event)"
-  >
-    <h3 app-accordion-item-heading>Título</h3>
-    <section>
-      <p>Conteúdo</p>
-      <p>
-        Mussum Ipsum, cacilds vidis litro abertis. Praesent malesuada urna nisi,
-        quis volutpat erat hendrerit non. Nam vulputate dapibus.Nullam volutpat
-        risus nec leo commodo, ut interdum diam laoreet. Sed non consequat
-        odio.Paisis, filhis, espiritis santis.Mais vale um bebadis conhecidiss,
-        que um alcoolatra anonimis.
-      </p>
-      <p>
-        Mussum Ipsum, cacilds vidis litro abertis. Praesent malesuada urna nisi,
-        quis volutpat erat hendrerit non. Nam vulputate dapibus.Nullam volutpat
-        risus nec leo commodo, ut interdum diam laoreet. Sed non consequat
-        odio.Paisis, filhis, espiritis santis.Mais vale um bebadis conhecidiss,
-        que um alcoolatra anonimis.
-      </p>
-    </section>
-  </details>
-</div>
+</section>
 
-<br />
 <hr />
 
-<h3>Log de eventos</h3>
+<h2>Todos itens abertos</h2>
+
+<section app-accordion [allOpened]="true">
+  <details app-accordion-item>
+    <h3 app-accordion-item-heading>Título 1</h3>
+    <p app-accordion-item-content>Conteúdo 1</p>
+  </details>
+  <details app-accordion-item>
+    <h3 app-accordion-item-heading>Título 2</h3>
+    <p app-accordion-item-content>Conteúdo 2</p>
+  </details>
+  <details app-accordion-item>
+    <h3 app-accordion-item-heading>Título 3</h3>
+    <p app-accordion-item-content>Conteúdo 3</p>
+  </details>
+</section>
+
+<hr />
+
+<h2>Eventos de saída</h2>
 
 <ol>
   <li *ngFor="let log of eventLogs">{{ log }}</li>
 </ol>
+
+<h3>Alternada</h3>
+
+<section app-accordion>
+  <details
+    *ngFor="let item of items"
+    app-accordion-item
+    (opened)="log('opened, ref: ' + $event)"
+    (closed)="log('closed, ref: ' + $event)"
+    [ref]="item"
+  >
+    <h3 app-accordion-item-heading>Título {{ item }}</h3>
+    <p app-accordion-item-content>Conteúdo {{ item }}</p>
+  </details>
+</section>
+
+<hr />
+
+<h3>Abertos</h3>
+
+<section app-accordion [allOpened]="true">
+  <details
+    *ngFor="let item of items"
+    app-accordion-item
+    (opened)="log('opened, ref: ' + $event)"
+    (closed)="log('closed, ref: ' + $event)"
+    [ref]="item"
+  >
+    <h3 app-accordion-item-heading>Título {{ item }}</h3>
+    <p app-accordion-item-content>Conteúdo {{ item }}</p>
+  </details>
+</section>

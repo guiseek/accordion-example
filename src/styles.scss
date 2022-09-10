@@ -1,13 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
+html,
+body {
   height: 100%;
 }
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+hr {
+  border-color: rgba(0, 0, 0, 0.1);
+  border-width: 1px 0 0 0;
+  border-style: dashed;
+  margin: 48px 0;
+}
 :root {
-  // --accordion-marker-icon-opened: '>';
-  // --accordion-marker-icon-closed: '<';
+  --accordion-color: 136, 0, 255;
+}
 
+.icon-marker-changed {
+  --accordion-icon-opened: ">";
+  --accordion-icon-closed: "<";
+}
+
+.inflex {
+  display: inline-flex;
+
+  &.col {
+    flex-direction: column;
+  }
+
+  &.rgap-12 {
+    row-gap: 12px;
+  }
+  &.rgap-6 {
+    row-gap: 6px;
+  }
+
+  &.cgap-12 {
+    column-gap: 12px;
+  }
+  &.cgap-6 {
+    column-gap: 6px;
+  }
+  &.align-center {
+    align-items: center;
+  }
 }

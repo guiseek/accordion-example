@@ -19,7 +19,7 @@ import { AccordionItemComponent } from './accordion-item.component';
       :host {
         display: flex;
         flex-direction: column;
-        border: 1px solid rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(var(--accordion-color, 0, 0, 0), 0.4);
         background-color: transparent;
         border-radius: 4px;
       }

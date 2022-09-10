@@ -3,19 +3,19 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: '[app-accordion-item-heading]',
   template: `<ng-content></ng-content>`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
     `
       :host {
-        padding: 8px 8px 0 8px;
+        padding: 6px 6px 0 6px;
         font-size: 100%;
-        padding: 8px;
-
+        padding: 6px;
+        margin: 6px;
         align-items: center;
         display: inline-flex;
         cursor: pointer;
       }
     `,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccordionItemHeadingComponent {}

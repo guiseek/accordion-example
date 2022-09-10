@@ -1,33 +1,23 @@
-details[app-accordion-item] {
-  &:not(:last-child) {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+:host {
+  &:not(:last-of-type, :last-child) {
+    border-bottom: 1px solid rgba(var(--accordion-color, 0, 0, 0), 0.4);
   }
 
   summary::marker {
-    content: var(--accordion-marker-icon-opened, "👉");
+    content: var(--accordion-icon-opened, "👉");
   }
   &[open] summary::marker {
-    content: var(--accordion-marker-icon-closed, "👇");
+    content: var(--accordion-icon-closed, "👇");
   }
 
   summary {
-    padding-left: 16px;
-    &:hover {
-      cursor: pointer;
-    }
+    padding-left: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: rgba(var(--accordion-color, 0, 0, 0), 0.06);
   }
-
-  section {
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
-    padding: 16px;
-    margin: 0;
-
-    > *:first-child {
-      margin-top: 0;
-    }
-
-    > *:last-child {
-      margin-bottom: 0;
-    }
+  &[open] summary {
+    border-radius: 4px 4px 0 0;
+    background-color: rgba(var(--accordion-color, 0, 0, 0), 0.1);
   }
 }
